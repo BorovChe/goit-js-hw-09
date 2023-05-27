@@ -11,17 +11,23 @@ const btnStop = document.querySelector('[data-stop]');
 
 btnStart.addEventListener('click', onMakeStart);
 btnStop.addEventListener('click', onMakeStop);
+onDisabledBtnStop();
 
-function onMakeStart() {
-  idIntetval = setInterval(() => {
+
+function generationColor() {
+   return idIntetval = setInterval(() => {
     bodyEl.style.backgroundColor = `${getRandomHexColor()}`;
   }, 1000);
+}
+
+function onMakeStart() {
+  generationColor();
   onDisabledBtnStart();
   onEnabledBtnStop();
 }
 
 function onMakeStop() {
-  clearInterval(idIntetval);
+clearInterval(idIntetval);
   onEnabledBtnStart();
   onDisabledBtnStop();
 }
@@ -41,5 +47,5 @@ function onDisabledBtnStart() {
 function onEnabledBtnStart() {
   btnStart.removeAttribute('disabled');
 }
-onDisabledBtnStop();
+
 
