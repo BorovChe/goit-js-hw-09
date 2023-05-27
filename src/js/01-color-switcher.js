@@ -13,12 +13,13 @@ btnStart.addEventListener('click', onMakeStart);
 btnStop.addEventListener('click', onMakeStop);
 onDisabledBtnStop();
 
-
+let idIntetval;
 function generationColor() {
-   return idIntetval = setInterval(() => {
+  idIntetval = setInterval(() => {
     bodyEl.style.backgroundColor = `${getRandomHexColor()}`;
   }, 1000);
 }
+
 
 function onMakeStart() {
   generationColor();
@@ -27,7 +28,7 @@ function onMakeStart() {
 }
 
 function onMakeStop() {
-clearInterval(idIntetval);
+clearInterval(idIntetval)
   onEnabledBtnStart();
   onDisabledBtnStop();
 }
