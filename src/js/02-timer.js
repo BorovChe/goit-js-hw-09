@@ -20,18 +20,22 @@ const options = {
       onEnabledBtn();
 
       btnStart.addEventListener('click', () => {
-        const timerInterval = setInterval(() => {
-          
+        timerInterval = setInterval(() => {
           const data = new Date();
-          let miliSec = selectedDates[0].getTime() - data.getTime();
-          const convertFunc = addLeadingZero(miliSec);
+          let milliseconds = selectedDates[0].getTime() - data.getTime();
+          const convertFunc = convertMs(milliseconds);
 
-          dayEl.textContent = convertFunc.leadingDays;
-          hourEl.textContent = convertFunc.leadingHours;
-          minuteEl.textContent = convertFunc.leadingMin;
-          secondEl.textContent = convertFunc.leadingSeconds;
+          dayEl.textContent = `${addLeadingZero(convertFunc.days)}`;
+          hourEl.textContent = `${addLeadingZero(convertFunc.hours)}`;
+          minuteEl.textContent = `${addLeadingZero(convertFunc.minutes)}`;
+          secondEl.textContent = `${addLeadingZero(convertFunc.seconds)}`;
 
-          if (secondEl.textContent === '00') {
+          if (
+            dayEl.textContent === '00' &&
+            hourEl.textContent === '00' &&
+            minuteEl.textContent === '00' &&
+            secondEl.textContent === '00'
+          ) {
             clearInterval(timerInterval);
           }
         }, 1000);
@@ -73,16 +77,5 @@ function convertMs(ms) {
 }
 
 function addLeadingZero(value) {
-  const convert = convertMs(value);
-  const convertDays = `${convert.days}`;
-  const convertHours = `${convert.hours}`;
-  const convertMin = `${convert.minutes}`;
-  const convertSeconds = `${convert.seconds}`;
-
-  const leadingDays = convertDays.padStart(2, '0');
-  const leadingHours = convertHours.padStart(2, '0');
-  const leadingMin = convertMin.padStart(2, '0');
-  const leadingSeconds = convertSeconds.padStart(2, '0');
-
-  return { leadingDays, leadingHours, leadingMin, leadingSeconds };
+  return String(value).padStart(2, '0');
 }
