@@ -7,10 +7,11 @@ function getRandomHexColor() {
 const bodyEl = document.querySelector('body');
 const btnStart = document.querySelector('[data-start]');
 const btnStop = document.querySelector('[data-stop]');
-onDisabledBtnStop();
+
 
 btnStart.addEventListener('click', onMakeStart);
 btnStop.addEventListener('click', onMakeStop);
+onDisabledBtnStop();
 
 function onMakeStart() {
   idIntetval = setInterval(() => {
