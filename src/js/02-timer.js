@@ -16,6 +16,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
+    let timerInterval;
     if (selectedDates[0].getTime() >= options.defaultDate.getTime()) {
       onEnabledBtn();
 
