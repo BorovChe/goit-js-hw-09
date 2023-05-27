@@ -11,7 +11,6 @@ const btnStop = document.querySelector('[data-stop]');
 
 btnStart.addEventListener('click', onMakeStart);
 btnStop.addEventListener('click', onMakeStop);
-onDisabledBtnStop();
 
 function onMakeStart() {
   idIntetval = setInterval(() => {
@@ -42,3 +41,5 @@ function onDisabledBtnStart() {
 function onEnabledBtnStart() {
   btnStart.removeAttribute('disabled');
 }
+onDisabledBtnStop();
+
